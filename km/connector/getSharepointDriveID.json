@@ -6,7 +6,7 @@
       "sourceConfig": {
         "apiPullConfig": {
           "requestType": "GET",
-          "url": "https://graph.microsoft.com/v1.0/sites/{siteId}/drives",
+          "url": "https://graph.microsoft.com/v1.0/sites/${{siteId}}/drives",
           "authentication": {
             "oauth": {
               "linkedAccount": "${{microsoftLinkedAccount}}"
