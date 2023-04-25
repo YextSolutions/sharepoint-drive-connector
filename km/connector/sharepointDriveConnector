@@ -1,0 +1,189 @@
+{
+  "$id": "sharepointDrive_sharepointDriveConnector",
+  "$schema": "https://schema.yext.com/config/km/connector/v3",
+  "displayName": "Sharepoint Drive Connector",
+  "entityType": "sharepoint_file",
+  "source": {
+    "sourceConfig": {
+        "nativeSourceConfig": {
+            "source": "sharepoint",
+            "operation": "fetchRootItems",
+            "inputs": {
+                "driveId": "${{driveId}}",
+                "microsoftLinkedAccount": "${{microsoftLinkedAccount}}",
+                "siteId": "${{siteId}}"
+            }
+            }
+        },
+    "selectors": [
+      {
+        "type": "JSON",
+        "header": "Entity ID",
+        "path": "id"
+      },
+      {
+        "type": "JSON",
+        "header": "Name",
+        "path": "name"
+      },
+      {
+        "type": "JSON",
+        "header": "File ",
+        "path": "\"@microsoft.graph.downloadUrl\""
+      },
+      {
+        "type": "JSON",
+        "header": "Landing Page URL",
+        "path": "webUrl"
+      },
+      {
+        "type": "JSON",
+        "header": "Creator Name",
+        "path": "createdBy.user.displayName"
+      },
+      {
+        "type": "JSON",
+        "header": "Creator Email",
+        "path": "createdBy.user.email"
+      },
+      {
+        "type": "JSON",
+        "header": "Created Date",
+        "path": "createdDateTime"
+      },
+      {
+        "type": "JSON",
+        "header": "Last Modified Email",
+        "path": "lastModifiedBy.user.email"
+      },
+      {
+        "type": "JSON",
+        "header": "Last Modified By Name",
+        "path": "lastModifiedBy.user.displayName"
+      },
+      {
+        "type": "JSON",
+        "header": "Last Modified Date",
+        "path": "lastModifiedDateTime"
+      },
+      {
+        "type": "JSON",
+        "header": "External Authorization Source",
+        "path": "permissions.value[].grantedToV2.siteUser.email"
+      },
+      {
+        "type": "JSON",
+        "header": "External Authorized Identities",
+        "path": "permissions.value[].grantedToV2.siteUser.displayName"
+      }
+    ]
+  },
+  "transforms": [
+    {
+      "extractText": {
+        "inputHeader": "Created Date",
+        "newColumnHeader": "Created Date - Formatted",
+        "extractOperation": "ALL_TEXT_BEFORE",
+        "extractFrom": "FIRST_INSTANCE_MATCHING_TEXT",
+        "valueToFind": {
+          "plainText": {
+            "value": "T",
+            "ignoreCase": false
+          }
+        }
+      }
+    },
+    {
+      "extractText": {
+        "inputHeader": "Last Modified Date",
+        "newColumnHeader": "Last Modified - Formatted",
+        "extractOperation": "ALL_TEXT_BEFORE",
+        "extractFrom": "FIRST_INSTANCE_MATCHING_TEXT",
+        "valueToFind": {
+          "plainText": {
+            "value": "T",
+            "ignoreCase": false
+          }
+        }
+      }
+    }
+  ],
+  "mappings": [
+    {
+      "header": "Entity ID",
+      "field": "entityId",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "Name",
+      "field": "name",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "File ",
+      "field": "oneDrive_file",
+      "subfieldPath": [
+        {
+          "name": "url"
+        }
+      ],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "Landing Page URL",
+      "field": "landingPageUrl",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "Creator Name",
+      "field": "oneDrive_creatorName",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "Creator Email",
+      "field": "oneDrive_creatorEmail",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "Created Date - Formatted",
+      "field": "oneDrive_createdDate",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "Last Modified Email",
+      "field": "oneDrive_lastModifiedByEmail",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "Last Modified By Name",
+      "field": "oneDrive_lastModifiedByName",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "Last Modified - Formatted",
+      "field": "oneDrive_lastModifiedDate",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "External Authorization Source",
+      "field": "externalAuthorizationSource",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    },
+    {
+      "header": "External Authorized Identities",
+      "field": "externalAuthorizedIdentities",
+      "subfieldPath": [],
+      "clearValueIfBlank": false
+    }
+  ]
+}
