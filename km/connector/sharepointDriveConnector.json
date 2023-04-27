@@ -68,17 +68,18 @@
       },
       {
         "type": "JSON",
-        "header": "External Authorization Source",
-        "path": "permissions.value[].grantedToV2.siteUser.email"
-      },
-      {
-        "type": "JSON",
         "header": "External Authorized Identities",
-        "path": "permissions.value[].grantedToV2.siteUser.displayName"
+        "path": "permissions.value[].grantedToV2.siteUser.email"
       }
     ]
   },
   "transforms": [
+    {
+      "addColumn": {
+        "newColumnHeader": "External Authorized Source",
+        "columnValue": "sharepoint"
+      }
+    },
     {
       "extractText": {
         "inputHeader": "Created Date",
