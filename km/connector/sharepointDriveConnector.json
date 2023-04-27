@@ -186,5 +186,14 @@
       "subfieldPath": [],
       "clearValueIfBlank": false
     }
-  ]
+  ],
+  "scheduleConfig": {
+    "customSchedule": {
+      "timeZone": "America/New_York",
+      "startDate": "2023-04-11",
+      "startTime": "09:00",
+      "frequencyType": "DAILY"
+    },
+    "runMode": "DEFAULT"
+  }
 }
