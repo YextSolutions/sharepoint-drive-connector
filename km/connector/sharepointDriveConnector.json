@@ -28,7 +28,7 @@
       },
       {
         "type": "JSON",
-        "header": "File ",
+        "header": "File",
         "path": "\"@microsoft.graph.downloadUrl\""
       },
       {
@@ -122,8 +122,8 @@
       "clearValueIfBlank": false
     },
     {
-      "header": "File ",
-      "field": "oneDrive_file",
+      "header": "File",
+      "field": "sharepoint_file",
       "subfieldPath": [
         {
           "name": "url"
@@ -139,37 +139,37 @@
     },
     {
       "header": "Creator Name",
-      "field": "oneDrive_creatorName",
+      "field": "sharepoint_creatorName",
       "subfieldPath": [],
       "clearValueIfBlank": false
     },
     {
       "header": "Creator Email",
-      "field": "oneDrive_creatorEmail",
+      "field": "sharepoint_creatorEmail",
       "subfieldPath": [],
       "clearValueIfBlank": false
     },
     {
       "header": "Created Date - Formatted",
-      "field": "oneDrive_createdDate",
+      "field": "sharepoint_createdDate",
       "subfieldPath": [],
       "clearValueIfBlank": false
     },
     {
       "header": "Last Modified Email",
-      "field": "oneDrive_lastModifiedByEmail",
+      "field": "sharepoint_lastModifiedByEmail",
       "subfieldPath": [],
       "clearValueIfBlank": false
     },
     {
       "header": "Last Modified By Name",
-      "field": "oneDrive_lastModifiedByName",
+      "field": "sharepoint_lastModifiedByName",
       "subfieldPath": [],
       "clearValueIfBlank": false
     },
     {
       "header": "Last Modified - Formatted",
-      "field": "oneDrive_lastModifiedDate",
+      "field": "sharepoint_lastModifiedDate",
       "subfieldPath": [],
       "clearValueIfBlank": false
     },
